@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> hi</title>
+</head>
+<body>
+<p id="hi"> </p>
+	<button onclick="get()">hi</button>
+	<script type="text/javascript">
+
+		 function get() {
+		 var xmlhttp = new XMLHttpRequest();
+		 url=" http://localhost:3000/db";
+
+		 xmlhttp.open("GET",url, true);
+		 xmlhttp.send();
+		 
+		 xmlhttp.onreadystatechange = function() {
+    	 
+    	 if (this.readyState == 4 && this.status == 200) {
+        var myObj = JSON.parse(this.responseText);
+        var resultObj=JSON.stringify(myObj);
+        document.getElementById("hi").innerHTML = resultObj;
+         }
+         };
+     }
+	</script>
+
+</body>
+</html>
