@@ -1,0 +1,16 @@
+{
+  "base": {
+    "word_count": 2723,
+    "nouns": 621,
+    "adjectives": 124,
+    "verbs": 109,
+    "tags_count": 24
+  },
+  "test": {
+    "word_count": 2723,
+    "nouns": 621,
+    "adjectives": 124,
+    "verbs": 109,
+    "tags_count": 24
+  }
+}

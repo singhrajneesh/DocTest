@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="theme.css" type="text/css"> </head>
 
 <body>
+
   <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <div class="container">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar3SupportedContent" aria-controls="navbar3SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
@@ -20,8 +21,8 @@
       </div>
     </div>
   </nav>
+
   <script type="text/javascript">
-     function get() {
      var xmlhttp = new XMLHttpRequest();
      url=" http://localhost:3000/db";
      xmlhttp.open("GET",url, true);
@@ -29,11 +30,20 @@
      xmlhttp.onreadystatechange = function() {
        if (this.readyState == 4 && this.status == 200) {
         var result= JSON.parse(this.responseText);
-         }
+        document.getElementById("baseword").innerHTML=result.base.word_count;
+        document.getElementById("testword").innerHTML=result.test.word_count;
+        document.getElementById("basenoun").innerHTML=result.base.nouns;
+        document.getElementById("testnoun").innerHTML=result.test.nouns;
+        document.getElementById("baseadjec").innerHTML=result.base.adjectives;
+        document.getElementById("testadjec").innerHTML=result.test.adjectives;
+        document.getElementById("baseverb").innerHTML=result.base.verbs;
+        document.getElementById("testverb").innerHTML=result.test.verbs;
+        document.getElementById("basetags").innerHTML=result.base.tags_count;
+        document.getElementById("testtags").innerHTML=result.test.tags_count;
+        }
          };
-     }
+
   </script>
-  <button onclick="getData()">Request</button>
   <div class="py-5">
     <div class="container">
       <div class="row">
@@ -50,28 +60,28 @@
             <tbody>
               <tr>
                 <td>Number of Words</td>
-                <td class="bg-light"><i class="fa fa-check fa-lg text-primary"></i></td>
-                <td><i class="fa fa-check fa-lg text-primary"></i></td>
+                <td id="baseword" class="bg-light" ></td>
+                <td id="testword"></td>
               </tr>
               <tr>
                 <td>Number of Nouns</td>
-                <td class="bg-light"><i class="fa fa-check fa-lg text-primary"></i></td>
-                <td><i class="fa fa-check fa-lg text-primary"></i></td>
+                <td id="basenoun"class="bg-light"><i class="fa fa-check fa-lg text-primary"></i></td>
+                <td id="testnoun"></td>
               </tr>
               <tr>
                 <td>Number of Adjective</td>
-                <td class="bg-light"><i class="fa fa-check fa-lg text-primary"></i></td>
-                <td><i class="fa fa-check fa-lg text-primary"></i></td>
+                <td  id="baseadjec" class="bg-light"></td>
+                <td id="testadjec"></td>
               </tr>
               <tr>
                 <td>Number of Verbs</td>
-                <td class="bg-light"><i class="fa fa-check fa-lg text-primary"></i></td>
-                <td><i class="fa fa-check fa-lg text-primary"></i></td>
+                <td id="baseverb" class="bg-light"></td>
+                <td id="testverb"></td>
               </tr>
               <tr>
                 <td>Number of Tags</td>
-                <td class="bg-light"></td>
-                <td><i class="fa fa-check fa-lg text-primary"></i></td>
+                <td id="basetags" class="bg-light"></td>
+                <td id="testtags"></td>
               </tr>
             </tbody>
           </table>

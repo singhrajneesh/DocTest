@@ -6,7 +6,7 @@ baseFile="./Documents/HTML_CSS.txt";
 
 baseNoun=0,baseAdjective=0,baseVerb=0;
 testNoun=0,testAdjective=0,testVerb=0;
-tags=0;
+baseTags=0,testTags=0;
 
 var path = require("path");
 var base_folder = path.join(path.dirname(require.resolve("natural")), "brill_pos_tagger");
@@ -18,7 +18,7 @@ var rules = new natural.RuleSet(rulesFilename);
 var tagger = new natural.BrillPOSTagger(lexicon, rules);
 
 
-//Reading the File containing all the HTML Tags,base file and fill to be tested 
+//Reading the File containing all the HTML Tags,base file and fill to be tested
 var tagData=fs.readFileSync(tagFile, 'utf8');
 var baseData=fs.readFileSync(baseFile, 'utf8');
 var testData=fs.readFileSync(testFile, 'utf8');
@@ -66,7 +66,7 @@ for(var i=0;i<testTag.length;i++){
 }
 
 for(var i=0; i<tagWords.length; i++)
-			{	
+			{
 				for(var j=0; j<baseWords.length; j++)
 				{
 					if(tagData[i]==baseWords[j])
@@ -101,6 +101,7 @@ for(var i=0; i<tagWords.length; i++)
 			verbs:testVerb,
 			tags_count:testTags
 		}
+	}
 
 	var jsonData = JSON.stringify(result,null,2);
 	fs.writeFileSync("./json/result.json",jsonData);
